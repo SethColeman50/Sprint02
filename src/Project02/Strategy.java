@@ -1,6 +1,7 @@
 package Project02;
 
-public interface Strategy {
+public interface Strategy
+{
     /**
      * Generic strategy for a game player
      * @param me - person to get life points for.
