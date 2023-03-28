@@ -6,15 +6,40 @@ import java.util.ArrayList;
 import Project02.Tribe;
 import Project02.People;
 
+/**
+ * The class Nation which creates tribes populated by people. There are to be a bare minimum of 2.
+ */
 public class Nation
 {
+    /**
+     * The int containing the number of life points a nation has.
+     */
     private int nationLifePoints;
+    /**
+     * The string containing the nation's name.
+     */
     private String nationName;
+    /**
+     * An Array List with all the tribes a nation has.
+     */
     private ArrayList<Tribe> tribes = new ArrayList<>();
+    /**
+     * An Array List with the people total in the Nation.
+     */
     private ArrayList<People> population = new ArrayList<>();
+    /**
+     * An Array List with the people still alive.
+     */
     private ArrayList<People> livingPopulation = new ArrayList<>();
 
 
+    /**
+     * The constructor. Takes a string for the name and the number of lifepoints to initiate it with.
+     * It saves the name of the nation into nationName and the amount of lifepoints into nationLifePoints.
+     * It then creates 5 tribes and adds the population and copies that same population into livingPopulation.
+     * @param name
+     * @param lifePoints
+     */
     public Nation(String name, int lifePoints)
     {
         nationName = name;
@@ -28,6 +53,10 @@ public class Nation
     }
 
 
+    /**
+     * Gets the living population of the nation.
+     * @return
+     */
     public ArrayList<People> getNationPopulation()
     {
         nationLifePoints = 0;
@@ -46,12 +75,19 @@ public class Nation
     }
 
 
+    /**
+     * returns the nation name.
+     * @return
+     */
     public String getNationName()
     {
         return nationName;
     }
 
 
+    /**
+     * Prints to the screen if the tribes within a specific nation are alive or dead. If alive, how many members left.
+     */
     public void printTribesStatus()
     {
         for(int tribe = 0; tribe < 1; tribe++)
@@ -68,6 +104,10 @@ public class Nation
         }
     }
 
+    /**
+     * I dunno ngl.
+     * @return
+     */
     public String toString()
     {
         String result = "\0";
