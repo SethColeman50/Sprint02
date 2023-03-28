@@ -26,7 +26,7 @@ class WeebWarriorStratTest
     public void testWeebWarriorFriend()
     {
         WeebWarrior Paradox=new WeebWarrior("Old Man","oldest men",100,new WeebWarriorStrat());
-        SchaperWizard Vin=new SchaperWizard("old man","oldest men",50,new WeebWizardStart());
+        SchaperWizard Vin=new SchaperWizard("old man","oldest men",50,new WeebWizardStrat());
 
         //Tests the big heal.
         assertEquals(200,Paradox.encounterLifePoints(Paradox,Vin));

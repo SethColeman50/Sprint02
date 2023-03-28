@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WeebWizardStartTest
+class WeebWizardStratTest
 {
     @Test
     public void testWeebWizardFight()
     {
-        WeebWizard Vin= new WeebWizard("old man","oldest men",100,new WeebWizardStart());
+        WeebWizard Vin= new WeebWizard("old man","oldest men",100,new WeebWizardStrat());
         SchaperWarrior Para=new SchaperWarrior("Fathers","Old dad",70,new WarriorStrategy());
         SchaperWizard Pedro=new SchaperWizard("Fathers","old dad",10,new WizardStrategy());
 
@@ -22,7 +22,7 @@ class WeebWizardStartTest
     @Test
     public void testWeebWizardFreind()
     {
-        WeebWizard Vin= new WeebWizard("old man","oldest men",100,new WeebWizardStart());
+        WeebWizard Vin= new WeebWizard("old man","oldest men",100,new WeebWizardStrat());
         WeebWarrior Para=new WeebWarrior("old man","oldest men",50,new WarriorStrategy());
         SchaperWizard Pedro2=new SchaperWizard("old man","oldest men",100,new WizardStrategy());
 

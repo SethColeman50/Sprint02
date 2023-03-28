@@ -105,7 +105,7 @@ public class Nation
     }
 
     /**
-     * I dunno ngl.
+     * Returns a string with all the tribes in a nation.
      * @return
      */
     public String toString()
