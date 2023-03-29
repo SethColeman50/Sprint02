@@ -6,7 +6,13 @@ package Project02;
 public class WeebWizard extends People
 {
     /**
-     * A rather cute description referencing a character from a relatively well-known comedy TV series from Japan.
+     * The constructor, gets passed the nation, number of lifepoints and strategy to be used.
+     * Allocates them appropriately.
+     *
+     *
+     * The description gets saved to myDescription.
+     * The description is simply a rather cute reference to a character from a relatively well-known comedy
+     * TV series from Japan, with the joke is that the name can't be said because of copyright.
      * @param nation
      * @param tribe
      * @param lifePoints

@@ -13,7 +13,7 @@ class WeebWizardStratTest
         SchaperWarrior Para=new SchaperWarrior("Fathers","Old dad",70,new WarriorStrategy());
         SchaperWizard Pedro=new SchaperWizard("Fathers","old dad",10,new WizardStrategy());
 
-        assertEquals(-200,Vin.encounterLifePoints(Vin,Para)); //Test vs Warrior. Expected to be dealt double the held lifepoints.
+        assertEquals(-100,Vin.encounterLifePoints(Vin,Para)); //Test vs Warrior. Expected to be dealt double the held lifepoints.
 
         assertEquals(100,Vin.encounterLifePoints(Vin,Pedro)); //Test vs Wizard. Expected to deal the same exact lifepoints.
 

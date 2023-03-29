@@ -13,8 +13,8 @@ class WeebWarriorStratTest
         SchaperWarrior StrikingDummy=new SchaperWarrior("Eorzea","FC",100,new WarriorStrategy());
         SchaperWizard StrikingDrone=new SchaperWizard("Eorzea","FC",100,new WizardStrategy());
 
-        assertEquals(200,Paradox.encounterLifePoints(Paradox,StrikingDummy));
-        assertEquals(200,Paradox.encounterLifePoints(Paradox,StrikingDrone));
+        assertEquals(100,Paradox.encounterLifePoints(Paradox,StrikingDummy));
+        assertEquals(100,Paradox.encounterLifePoints(Paradox,StrikingDrone));
 
         Paradox.modifyLifePoints(-31);
         assertEquals(6,Paradox.encounterLifePoints(Paradox,StrikingDummy));
@@ -26,15 +26,15 @@ class WeebWarriorStratTest
     public void testWeebWarriorFriend()
     {
         WeebWarrior Paradox=new WeebWarrior("Old Man","oldest men",100,new WeebWarriorStrat());
-        SchaperWizard Vin=new SchaperWizard("old man","oldest men",50,new WeebWizardStrat());
+        SchaperWizard Vin=new SchaperWizard("Old Man","oldest men",50,new WeebWizardStrat());
 
         //Tests the big heal.
-        assertEquals(200,Paradox.encounterLifePoints(Paradox,Vin));
+        assertEquals(-100,Paradox.encounterLifePoints(Paradox,Vin));
 
         Vin.modifyLifePoints(100);
         Paradox.modifyLifePoints(-90);
 
-        //Tests no heal.
+        //Tests smallest.
         assertEquals(1,Paradox.encounterLifePoints(Paradox,Vin));
 
     }

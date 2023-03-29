@@ -5,8 +5,10 @@ package Project02;
  */
 public class WeebWarrior extends People
 {
-    /**
-     * The description for the Weeb Warrior. A somewhat funny reference to the MMORPG Final Fantasy XIV
+    /**The constructor. Gets passed a nation, tribe, number of lifepoints and strategy to be used and allocates them accordingly.
+     *
+     * The description for the Weeb Warrior gets stored in myDescription.
+     * The description is simply a somewhat funny reference to the MMORPG Final Fantasy XIV
      * @param nation
      * @param tribe
      * @param lifepoints
@@ -19,7 +21,8 @@ public class WeebWarrior extends People
     }
 
     /**
-     * Sends back the strategy
+     * Function called with two individuals which uses this individual's strategy to decide what happens when encountering
+     * another person. Returns how many lifepoints are to get added or subtracted.
      * @param me
      * @param OtherPerson
      * @return
