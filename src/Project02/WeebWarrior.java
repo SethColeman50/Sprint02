@@ -17,7 +17,7 @@ public class WeebWarrior extends People
     WeebWarrior(String nation,String tribe, int lifepoints, Strategy WeebWarriorStart)
     {
         super(nation,tribe,PeopleType.warrior,lifepoints,WeebWarriorStart);
-        myDescription= "First time tanking. Currently leveling my Warrior to 90. You pull, you tank.";
+        myDescription= "Am Tank."; //"First time tanking. Currently leveling my Warrior to 90. You pull, you tank.";
     }
 
     /**

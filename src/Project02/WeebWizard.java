@@ -21,7 +21,7 @@ public class WeebWizard extends People
     WeebWizard(String nation, String tribe, int lifePoints, Strategy WeebWizardStrat)
     {
         super(nation, tribe, PeopleType.wizard, lifePoints, WeebWizardStrat);
-        myDescription = "The Wizard of darkness, child of Chaos, chosen of the chosen, my name is--[Redacted]";
+        myDescription = "Hello desu-da"; //"The Wizard of darkness, child of Chaos, chosen of the chosen, my name is--[Redacted]";
 
     }
 
