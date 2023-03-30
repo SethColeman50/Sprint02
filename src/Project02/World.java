@@ -14,7 +14,10 @@ public class World
     private Random generator;
     private ArrayList<People> worldCreatedPeople = new ArrayList<>();
 
-    
+    /**
+     * the World constructor
+     * sets up the random number generator and creates the world
+     */
     public World()
     {
         // seed for psuedo-random number generator
@@ -24,6 +27,10 @@ public class World
         worldCreatedPeople.addAll(getWorldCreatedPopulation());
     }
 
+    /**
+     * simulates all the rounds of the game,
+     * all living people will
+     */
     public void war()
         {
             ArrayList<Integer> worldSurvivingPeople = new ArrayList<>();
@@ -42,7 +49,7 @@ public class World
                     System.out.print("Game is over! Winning Nation is: ");
                     if (survivingNations.size() == 0)
                     {
-                        System.out.println("All Nations Distroyed.");
+                        System.out.println("All Nations Destroyed.");
                     }
                     else
                     {
@@ -61,14 +68,18 @@ public class World
     }
 
 
-
+    /**
+     * creates a world with two nations
+     */
     public void createWorld()
     {
         allNations.add(new Nation("Idiots", (worldLifePoints / 2)));
         allNations.add(new Nation("Minions", (worldLifePoints) / 2));
     }
 
-
+    /**
+     * @return the total number of people alive
+     */
     public ArrayList<People> getWorldCreatedPopulation()
     {
         ArrayList<People> livingPeople = new ArrayList<>();
@@ -79,7 +90,9 @@ public class World
         return livingPeople;
     }
 
-
+    /**
+     * @return the number of people that are alive.
+     */
     public ArrayList<Integer> getWorldSurvivingPeople()
     {
         ArrayList<Integer> survivors = new ArrayList<>();
@@ -93,7 +106,9 @@ public class World
         return survivors;
     }
 
-
+    /**
+     * @return the nations that have any alive people in them
+     */
     public Set<String> getSurvivingNations()
     {
         Set<String> survivingNations = new HashSet<>();
@@ -108,7 +123,11 @@ public class World
         return survivingNations;
     }
 
-
+    /**
+     * the
+     * @param person1 the first person's damage value
+     * @param person2 the second person's damage value
+     */
     public void encounter(Integer person1, Integer person2)
     {
         Integer person1LifePointsToUse;
@@ -153,7 +172,10 @@ public class World
 
     }
 
-
+    /**
+     *
+     * @param combatants a list of people's damage values
+     */
     public void playOneRound(ArrayList<Integer> combatants)
     {
         System.out.println(combatants.size());
