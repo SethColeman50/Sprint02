@@ -77,6 +77,7 @@ public class World
 //        allNations.add(new Nation("Minions", (worldLifePoints) / 2));
         allNations.add(new Nation("Seths", (worldLifePoints) / 4));
         allNations.add(new Nation("Schapers", (worldLifePoints) / 4));
+        allNations.add(new Nation("Owens", (worldLifePoints) / 4));
         allNations.add(new Nation("Orlandos",(worldLifePoints)/4));
     }
 
