@@ -69,12 +69,14 @@ public class World
 
 
     /**
-     * creates a world with two nations
+     * creates a world with four nations
      */
     public void createWorld()
     {
-        allNations.add(new Nation("Idiots", (worldLifePoints / 2)));
-        allNations.add(new Nation("Minions", (worldLifePoints) / 2));
+//        allNations.add(new Nation("Idiots", (worldLifePoints / 2)));
+//        allNations.add(new Nation("Minions", (worldLifePoints) / 2));
+        allNations.add(new Nation("Seths", (worldLifePoints) / 2));
+        allNations.add(new Nation("Schapers", (worldLifePoints) / 2));
     }
 
     /**

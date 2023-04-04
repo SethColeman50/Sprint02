@@ -47,10 +47,19 @@ public class Tribe
         tribeName = tribe;
         tribeLifePoints = lifePoints;
         for(int i = 0; i < 5; i++)
-            if(i % 2 == 0)
-                members.add(new SchaperWarrior(nationName, tribeName, tribeLifePoints / 5, new WarriorStrategy()));
-            else
-                members.add(new SchaperWizard(nationName, tribeName, tribeLifePoints / 5, new WizardStrategy()));
+            if(i % 2 == 0) {
+                if (nation.equals("Schapers")) {
+                    members.add(new SchaperWarrior(nationName, tribeName, tribeLifePoints / 5, new WarriorStrategy()));
+                } else if (nation.equals("Seths")) {
+                    members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWarriorStrategy()));
+                }
+            } else {
+                if (nation.equals("Schapers")) {
+                    members.add(new SchaperWizard(nationName, tribeName, tribeLifePoints / 5, new WizardStrategy()));
+                } else if (nation.equals("Seths")) {
+                    members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWizardStrategy()));
+                }
+            }
         for(int i = 0; i < members.size(); i++)
             livingMembers.addAll(members);
     }
