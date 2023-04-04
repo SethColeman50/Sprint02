@@ -52,16 +52,21 @@ public class Tribe
                     members.add(new SchaperWarrior(nationName, tribeName, tribeLifePoints / 5, new WarriorStrategy()));
                 } else if (nation.equals("Seths")) {
                     members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWarriorStrategy()));
+                } else if (nation.equals("Orlandos")) {
+                    members.add(new WeebWarrior(nationName,tribeName,tribeLifePoints/5, new WeebWarriorStrat()));
                 }
             } else {
                 if (nation.equals("Schapers")) {
                     members.add(new SchaperWizard(nationName, tribeName, tribeLifePoints / 5, new WizardStrategy()));
                 } else if (nation.equals("Seths")) {
                     members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWizardStrategy()));
+                } else if (nation.equals("Orlandos")) {
+                    members.add(new WeebWizard(nationName,tribeName,lifePoints/5, new WeebWizardStrat()));
                 }
             }
         for(int i = 0; i < members.size(); i++)
             livingMembers.addAll(members);
+
     }
 
     /**
