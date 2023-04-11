@@ -6,7 +6,6 @@ package Project02;
 public class SethWizardStrategy implements Strategy {
     @Override
     public int strategy(People me, People otherPerson) {
-        System.out.println();
         if (me.getNation().equals(otherPerson.getNation())) {
             if (me.getTribe().equals(otherPerson.getTribe())) {
                 return 50;

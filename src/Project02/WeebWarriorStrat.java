@@ -11,26 +11,23 @@ public class WeebWarriorStrat implements Strategy
      * Implementation of the above description. It's about as complex as it sounds.
      * Which isn't much. Heal others for double the difference of your life points only when lower than you, but
      * don't get healed outside of a singular lifepoint.
-     *
      * Attack hard when near full health. Otherwise, you attack normally.
      * @param me - person to get life points for.
      * @param otherPerson - the opponent of the encounter
-     * @return
+     * @return the life points to be commited
      */
     public int strategy(People me, People otherPerson)
     {
-        int lifePoints = 0;
-        if(me.getNation() == otherPerson.getNation())
+        int lifePoints;
+        if(me.getNation().equals(otherPerson.getNation()))
         {
             if(otherPerson.getLifePoints() <= me.getLifePoints()) //Only heal friends lower than self.
             {
-                    //System.out.println("High-octane mitosis!!");
                     lifePoints = (-((me.getLifePoints() - otherPerson.getLifePoints()))*2);
 
             }
             else //Get a consolation 1 lifepoint for talking to your friend.
             {
-                //System.out.println("Me no heal. Healers are the green DPS.");
                 lifePoints=1;
             }
         }
@@ -44,7 +41,6 @@ public class WeebWarriorStrat implements Strategy
             }
             else
             {
-                //System.out.println("L+Ratio+Skill Issue+Inner Release+Bloodwhetting+Fell Cleave."); //Do a lot of damage.
                 lifePoints = (me.getLifePoints()*2)/2;
             }
         }
