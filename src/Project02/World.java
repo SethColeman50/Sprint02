@@ -11,7 +11,7 @@ public class World
     private ArrayList<Nation> allNations = new ArrayList<>();
     private ArrayList<Nation> allLivingNations = new ArrayList<>();
 
-    private Random generator;
+    private Die generator;
     private ArrayList<People> worldCreatedPeople = new ArrayList<>();
 
     /**
@@ -22,7 +22,7 @@ public class World
     {
         // seed for psuedo-random number generator
         Date seed = new Date();
-        generator = new Random(seed.getTime());
+        generator = Die.getInstance();
         createWorld();
         worldCreatedPeople.addAll(getWorldCreatedPopulation());
     }
@@ -144,21 +144,21 @@ public class World
         person2LifePointsToUse = worldCreatedPeople.get(person2).encounterLifePoints(worldCreatedPeople.get(person1), worldCreatedPeople.get(person2));
 
         // amount of life points actually used is subject to a psuedo-random encounter
-        Integer p1damage =  (int) (generator.nextFloat() * person1LifePointsToUse);
-        Integer p2damage =  (int) (generator.nextFloat() * person2LifePointsToUse);
+        Integer p1damage =  (generator.roll(10) / 10) * person1LifePointsToUse;
+        Integer p2damage =  (generator.roll(10) / 10) * person2LifePointsToUse;
 
         if ((p1damage > 0) && (p2damage > 0))  // person 1  and person 2 are fighting and inflicting damage
         {
-            p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*p1damage);
-            p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*p2damage);
+            p2damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person1).getType().ordinal()+1)*p1damage;
+            p1damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person2).getType().ordinal()+1)*p2damage;
         }
         else if ((p1damage > 0) && (p2damage <= 0)) // person 1 is fighting and person 2 is running
         {
-            p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*(p1damage/3));
+            p2damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person1).getType().ordinal()+1)*(p1damage/3);
         }
         else if ((p1damage <= 0) && (p2damage > 0)) // person 2 is fighting and person 1 is running
         {
-            p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3));
+            p1damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3);
         }
         else // freindly encounter, do nothing
         {
