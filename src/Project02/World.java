@@ -175,11 +175,13 @@ public class World
         }
 
         //roll a d10 and use that to calculate damage based on distance
+        System.out.println("p2damage: " + p2damage);
+        System.out.println("p1damage: " + p1damage);
         int roll = generator.roll(10);
-        p2damage = (int)(p2damage * (1.0/roll));
-        p1damage = (int)(p1damage * (1.0/roll));
-
-
+        p2damage = (int)(p2damage * (10.0/roll));
+        p1damage = (int)(p1damage * (10.0/roll));
+        System.out.println("p2damage: " + p2damage);
+        System.out.println("p1damage: " + p1damage);
         // record the damage: positive damage should be subtracted for persons lifePoint
         // negative damage is added to persons life points
         worldCreatedPeople.get(person1).modifyLifePoints((-p2damage));
