@@ -9,7 +9,8 @@ public enum PeopleType
      * Denotes that a person is a wizard or a warrior.
      */
     wizard  ("wizard"),
-    warrior ("warrior");
+    warrior ("warrior"),
+    healer ("healer");
 
     /**
      * A string which contains what type is to be used.
