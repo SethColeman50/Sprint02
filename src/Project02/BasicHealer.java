@@ -15,7 +15,7 @@ public class BasicHealer extends People
     BasicHealer(String nation, String tribe, int lifePoints, Strategy healerStrat)
     {
         super(nation, tribe, PeopleType.healer, lifePoints, healerStrat);
-        myDescription = "\tBasic WhiteMage";
+        myDescription = "\tHealer";
     }
 
     /**
