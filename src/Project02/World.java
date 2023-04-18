@@ -174,9 +174,7 @@ public class World
             p1damage = 100 - worldCreatedPeople.get(person2).getLifePoints();
         }
 
-        //distance calculation
-            //roll a d10
-            //multiply the damage value by (1/roll)
+        //roll a d10 and use that to calculate damage based on distance
         int roll = generator.roll(10);
         p2damage = (int)(p2damage * (1.0/roll));
         p1damage = (int)(p1damage * (1.0/roll));
