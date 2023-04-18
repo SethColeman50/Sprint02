@@ -11,10 +11,8 @@ public class World
     private ArrayList<Nation> allNations = new ArrayList<>();
     private ArrayList<Nation> allLivingNations = new ArrayList<>();
 
-    private Random generator;
+    private Die generator;
     private ArrayList<People> worldCreatedPeople = new ArrayList<>();
-
-    private final Die die = Die.getInstance();
 
     /**
      * the World constructor
@@ -179,7 +177,7 @@ public class World
         //distance calculation
             //roll a d10
             //multiply the damage value by (1/roll)
-        int roll = die.roll(10);
+        int roll = generator.roll(10);
         p2damage = (int)(p2damage * (1.0/roll));
         p1damage = (int)(p1damage * (1.0/roll));
 
