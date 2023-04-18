@@ -136,7 +136,7 @@ public class World
     {
         Integer person1LifePointsToUse;
         Integer person2LifePointsToUse;
-        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + worldCreatedPeople.get(person2));
+        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + " " + worldCreatedPeople.get(person2));
 
         //if lifePointsToUse is negative, then person is either running away in a hostile encounter
         // or person is giving life points to another person from same nation
@@ -160,9 +160,18 @@ public class World
         {
             p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3));
         }
-        else // freindly encounter, do nothing
+        else // friendly encounter, do nothing
         {
 
+        }
+
+        //check if person1 subtract p2damage will be over 100 lifepoints,
+        if (worldCreatedPeople.get(person1).getLifePoints() - p2damage > 100) {
+            //clamps p2damage to have the difference between 100 and person1 lifePoints
+            p2damage = 100 - worldCreatedPeople.get(person1).getLifePoints();
+        }
+        if (worldCreatedPeople.get(person2).getLifePoints() - p1damage > 100) {
+            p1damage = 100 - worldCreatedPeople.get(person2).getLifePoints();
         }
 
         // record the damage: positive damage should be subtracted for persons lifePoint
