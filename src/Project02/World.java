@@ -14,6 +14,8 @@ public class World
     private Random generator;
     private ArrayList<People> worldCreatedPeople = new ArrayList<>();
 
+    private final Die die = Die.getInstance();
+
     /**
      * the World constructor
      * sets up the random number generator and creates the world
@@ -173,6 +175,14 @@ public class World
         if (worldCreatedPeople.get(person2).getLifePoints() - p1damage > 100) {
             p1damage = 100 - worldCreatedPeople.get(person2).getLifePoints();
         }
+
+        //distance calculation
+            //roll a d10
+            //multiply the damage value by (1/roll)
+        int roll = die.roll(10);
+        p2damage = (int)(p2damage * (1.0/roll));
+        p1damage = (int)(p1damage * (1.0/roll));
+
 
         // record the damage: positive damage should be subtracted for persons lifePoint
         // negative damage is added to persons life points
