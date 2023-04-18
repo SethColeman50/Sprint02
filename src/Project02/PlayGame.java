@@ -6,8 +6,6 @@ import Project02.World;
  */
 public class PlayGame
 {
-    //private Random generator;
-
     /**
      * Creates a new world and starts the game by calling 'war' function.
      */

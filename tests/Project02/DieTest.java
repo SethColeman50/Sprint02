@@ -13,6 +13,9 @@ class DieTest {
         assertTrue(List.of(1, 2, 3).contains(die.roll(3)));
         assertNotEquals(0, die.roll(3));
 
+        assertThrows(IllegalArgumentException.class, () -> die.roll(0));
+        assertThrows(IllegalArgumentException.class, () -> die.roll(2));
+
         assertTrue(List.of(1, 2, 3, 4, 5).contains(die.roll(5)));
     }
 }
