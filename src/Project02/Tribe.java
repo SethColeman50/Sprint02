@@ -1,10 +1,6 @@
 package Project02;
-import java.util.Collection;
-import java.util.Collections;
-import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import Project02.People;
-import Project02.PeopleType;
 import Project02.SchaperWarrior;
 import Project02.SchaperWizard;
 
@@ -16,26 +12,26 @@ public class Tribe
     /**
      * A string containing the nation's name. Specifically, the nation a tribe belongs to.
      */
-    private String nationName;
+    private final String nationName;
     /**
      * A string containing the tribe's nam.e
      */
-    private String tribeName;
+    private final String tribeName;
     /**
-     * The amount of a lifepoints a tribe is to be created with and how many it has to allocate for people.
+     * The amount of a life points a tribe is to be created with and how many it has to allocate for people.
      */
     private int tribeLifePoints;
     /**
      * An Array List with the members of a tribe in it.
      */
-    private ArrayList<People> members = new ArrayList<>();
+    private final ArrayList<People> members = new ArrayList<>();
     /**
      * An Array List with the living members of a tribe in it.
      */
-    private ArrayList<People> livingMembers = new ArrayList<>();
+    private final ArrayList<People> livingMembers = new ArrayList<>();
 
     /**
-     * The constructor for Tribe. Get passed the nation name and tribe name through a string as well as how many lifepoints
+     * The constructor for Tribe. Get passed the nation name and tribe name through a string as well as how many life points
      * it will have available to it.
      * @param nation
      * @param tribe
@@ -48,24 +44,26 @@ public class Tribe
         tribeLifePoints = lifePoints;
         for(int i = 0; i < 5; i++)
             if(i % 2 == 0) {
-                if (nation.equals("Schapers")) {
-                    members.add(new SchaperWarrior(nationName, tribeName, tribeLifePoints / 5, new WarriorStrategy()));
-                } else if (nation.equals("Seths")) {
-                    members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWarriorStrategy()));
-                } else if (nation.equals("Owens")) {
-                    members.add(new OwenWarrior(nationName, tribeName, tribeLifePoints / 5, new OwenWarriorStrategy()));
-                } else if (nation.equals("Orlandos")) {
-                    members.add(new WeebWarrior(nationName,tribeName,tribeLifePoints/ 5, new WeebWarriorStrat()));
+                switch (nation) {
+                    case "Schapers" ->
+                            members.add(new SchaperWarrior(nationName, tribeName, tribeLifePoints / 5, new WarriorStrategy()));
+                    case "Seths" ->
+                            members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 5, new SethWarriorStrategy()));
+                    case "Owens" ->
+                            members.add(new OwenWarrior(nationName, tribeName, tribeLifePoints / 5, new OwenWarriorStrategy()));
+                    case "Orlandos" ->
+                            members.add(new WeebWarrior(nationName, tribeName, tribeLifePoints / 5, new WeebWarriorStrat()));
                 }
             } else {
-                if (nation.equals("Schapers")) {
-                    members.add(new SchaperWizard(nationName, tribeName, tribeLifePoints / 5, new WizardStrategy()));
-                } else if (nation.equals("Seths")) {
-                    members.add(new SethWizard(nationName, tribeName, tribeLifePoints / 5, new SethWizardStrategy()));
-                } else if (nation.equals("Owens")) {
-                    members.add(new OwenWizard(nationName, tribeName, tribeLifePoints / 5, new OwenWizardStrategy()));
-                } else if (nation.equals("Orlandos")) {
-                    members.add(new WeebWizard(nationName,tribeName,tribeLifePoints/ 5, new WeebWizardStrat()));
+                switch (nation) {
+                    case "Schapers" ->
+                            members.add(new SchaperWizard(nationName, tribeName, tribeLifePoints / 5, new WizardStrategy()));
+                    case "Seths" ->
+                            members.add(new SethWizard(nationName, tribeName, tribeLifePoints / 5, new SethWizardStrategy()));
+                    case "Owens" ->
+                            members.add(new OwenWizard(nationName, tribeName, tribeLifePoints / 5, new OwenWizardStrategy()));
+                    case "Orlandos" ->
+                            members.add(new WeebWizard(nationName, tribeName, tribeLifePoints / 5, new WeebWizardStrat()));
                 }
 
             }
@@ -84,35 +82,21 @@ public class Tribe
     {
         livingMembers.clear();
         tribeLifePoints = 0;
-        for(int person = 0; person < members.size(); person++)
-        {
-            if(members.get(person).isPersonAlive())
-            {
-                livingMembers.add(members.get(person));
-                tribeLifePoints += members.get(person).getLifePoints();
+        for (People member : members) {
+            if (member.isPersonAlive()) {
+                livingMembers.add(member);
+                tribeLifePoints += member.getLifePoints();
                 //System.out.println(members.get(person));
-            }
-            else
-            {
-                if(!(members.get(person).getDead()))
-                {
-                    members.get(person).setDead();
-                    System.out.println("\t\t" + members.get(person) + " is dead!");
+            } else {
+                if (!(member.getDead())) {
+                    member.setDead();
+                    System.out.println("\t\t" + member + " is dead!");
                 }
             }
         }
         //System.out.println(livingMembers);
         return livingMembers;
     }
-    /*
-    public void printMembers()
-    {
-        for(int i = 0; i < 2; i++)
-        {
-            System.out.println(people.get(i));
-        }
-    }
-*/
 
     /**
      * Returns the number of people still alive by returning the size of the livingMembers Array List.
@@ -133,7 +117,7 @@ public class Tribe
     }
 
     /**
-     * Returns the amount of lifepoints that a tribe has left.
+     * Returns the amount of life points that a tribe has left.
      * @return
      */
     public int getTribeLifePoints()
@@ -156,15 +140,12 @@ public class Tribe
      */
     public String toString()
     {
-        String result = "\0";
-
-        result = tribeName;
-        for(int i = 0; i < members.size(); i++)
-        {
-            result = result + '\n' + members.get(i).toString();
+        StringBuilder result = new StringBuilder(tribeName);
+        for (People member : members) {
+            result.append('\n').append(member.toString());
         }
-        result = result + '\n';
-        return result;
+        result.append('\n');
+        return result.toString();
     }
 
 }

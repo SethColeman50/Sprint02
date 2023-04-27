@@ -12,18 +12,11 @@ public class WarriorStrategy implements Strategy{
     public int strategy(People me, People otherPerson)
     {
         int lifePoints = 0;
-        if(me.getNation() == otherPerson.getNation())
+        if(me.getNation().equals(otherPerson.getNation()))
         {
             if(otherPerson.getLifePoints() < me.getLifePoints())
             {
-                if(otherPerson.getTribe() == me.getTribe())
-                {
-                    lifePoints = -((me.getLifePoints() - otherPerson.getLifePoints()));
-                }
-                else
-                {
-                    lifePoints = -((me.getLifePoints() - otherPerson.getLifePoints()));
-                }
+                lifePoints = -((me.getLifePoints() - otherPerson.getLifePoints()));
             }
         }
         else

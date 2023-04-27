@@ -8,11 +8,10 @@ public class World
 {
     private final int worldLifePoints = 4000;
     private final int numberOfRounds = 40;
-    private ArrayList<Nation> allNations = new ArrayList<>();
-    private ArrayList<Nation> allLivingNations = new ArrayList<>();
+    private final ArrayList<Nation> allNations = new ArrayList<>();
 
-    private Random generator;
-    private ArrayList<People> worldCreatedPeople = new ArrayList<>();
+    private final Random generator;
+    private final ArrayList<People> worldCreatedPeople = new ArrayList<>();
 
     /**
      * the World constructor
@@ -37,11 +36,10 @@ public class World
 
             for(int round = 1; round < numberOfRounds; round++)
             {
-                Set<String> survivingNations = new HashSet<>();
                 System.out.println("Round number: " + round);
                 worldSurvivingPeople.clear();
                 worldSurvivingPeople.addAll(getWorldSurvivingPeople());
-                survivingNations.addAll(getSurvivingNations());
+                Set<String> survivingNations = new HashSet<>(getSurvivingNations());
                 if ((worldSurvivingPeople.size() >= 2) && (survivingNations.size() > 1) )
                     playOneRound(worldSurvivingPeople);
                 else
@@ -55,9 +53,8 @@ public class World
                     {
                         System.out.println(survivingNations);
                         System.out.println("The survivors are:");
-                        for (Integer i = 0; i < worldSurvivingPeople.size(); i++)
-                        {
-                            System.out.println(worldCreatedPeople.get(worldSurvivingPeople.get(i)));
+                        for (Integer worldSurvivingPerson : worldSurvivingPeople) {
+                            System.out.println(worldCreatedPeople.get(worldSurvivingPerson));
                         }
                     }
                     break;
@@ -73,8 +70,6 @@ public class World
      */
     public void createWorld()
     {
-//        allNations.add(new Nation("Idiots", (worldLifePoints / 2)));
-//        allNations.add(new Nation("Minions", (worldLifePoints) / 2));
         allNations.add(new Nation("Seths", (worldLifePoints) / 4));
         allNations.add(new Nation("Schapers", (worldLifePoints) / 4));
         allNations.add(new Nation("Owens", (worldLifePoints) / 4));
@@ -88,8 +83,7 @@ public class World
     {
         ArrayList<People> livingPeople = new ArrayList<>();
         // add all living people from allNations to livingPeople
-        for(int nation = 0; nation < allNations.size(); nation++)
-            livingPeople.addAll(allNations.get(nation).getNationPopulation());
+        for (Nation allNation : allNations) livingPeople.addAll(allNation.getNationPopulation());
         //System.out.println(livingPeople);
         return livingPeople;
     }
@@ -100,7 +94,7 @@ public class World
     public ArrayList<Integer> getWorldSurvivingPeople()
     {
         ArrayList<Integer> survivors = new ArrayList<>();
-        for (Integer i = 0; i < worldCreatedPeople.size(); i++)
+        for (int i = 0; i < worldCreatedPeople.size(); i++)
         {
             if(worldCreatedPeople.get(i).isPersonAlive())
             {
@@ -117,11 +111,9 @@ public class World
     {
         Set<String> survivingNations = new HashSet<>();
 
-        for (Integer i = 0; i < worldCreatedPeople.size(); i++)
-        {
-            if(worldCreatedPeople.get(i).isPersonAlive())
-            {
-                survivingNations.add(worldCreatedPeople.get(i).getNation());
+        for (People worldCreatedPerson : worldCreatedPeople) {
+            if (worldCreatedPerson.isPersonAlive()) {
+                survivingNations.add(worldCreatedPerson.getNation());
             }
         }
         return survivingNations;
@@ -134,8 +126,8 @@ public class World
      */
     public void encounter(Integer person1, Integer person2)
     {
-        Integer person1LifePointsToUse;
-        Integer person2LifePointsToUse;
+        int person1LifePointsToUse;
+        int person2LifePointsToUse;
         System.out.println("Encounter: " + worldCreatedPeople.get(person1) + worldCreatedPeople.get(person2));
 
         //if lifePointsToUse is negative, then person is either running away in a hostile encounter
@@ -144,26 +136,24 @@ public class World
         person2LifePointsToUse = worldCreatedPeople.get(person2).encounterLifePoints(worldCreatedPeople.get(person1), worldCreatedPeople.get(person2));
 
         // amount of life points actually used is subject to a psuedo-random encounter
-        Integer p1damage =  (int) (generator.nextFloat() * person1LifePointsToUse);
-        Integer p2damage =  (int) (generator.nextFloat() * person2LifePointsToUse);
+        int p1damage =  (int) (generator.nextFloat() * person1LifePointsToUse);
+        int p2damage =  (int) (generator.nextFloat() * person2LifePointsToUse);
 
         if ((p1damage > 0) && (p2damage > 0))  // person 1  and person 2 are fighting and inflicting damage
         {
             p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*p1damage);
             p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*p2damage);
         }
-        else if ((p1damage > 0) && (p2damage <= 0)) // person 1 is fighting and person 2 is running
+        else if (p1damage > 0) // person 1 is fighting and person 2 is running
         {
             p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*(p1damage/3));
         }
-        else if ((p1damage <= 0) && (p2damage > 0)) // person 2 is fighting and person 1 is running
+        else if (p2damage > 0) // person 2 is fighting and person 1 is running
         {
             p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3));
         }
-        else // freindly encounter, do nothing
-        {
+        // freindly encounter, do nothing
 
-        }
 
         // record the damage: positive damage should be subtracted for persons lifePoint
         // negative damage is added to persons life points
@@ -183,11 +173,10 @@ public class World
     public void playOneRound(ArrayList<Integer> combatants)
     {
         System.out.println(combatants.size());
-        ArrayList<Integer> survivors = new ArrayList<>();
-        Integer numberOfCombatants;
+        int numberOfCombatants;
         Collections.shuffle(combatants);
         numberOfCombatants = combatants.size() - 1;
-        Integer combatantIndex = 0;
+        int combatantIndex = 0;
         while(combatantIndex < numberOfCombatants)
         {
             encounter(combatants.get(combatantIndex), combatants.get(combatantIndex+1));

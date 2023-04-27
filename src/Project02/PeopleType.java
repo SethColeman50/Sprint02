@@ -14,7 +14,7 @@ public enum PeopleType
     /**
      * A string which contains what type is to be used.
      */
-    private String description;
+    private final String description;
 
     /**
      * Function which gets passed which type is to be used and stores it into the description string.
