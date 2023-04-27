@@ -7,7 +7,7 @@ import java.util.*;
 public class World
 {
     private final int worldLifePoints = 4000;
-    private final int numberOfRounds = 40;
+    private final int numberOfRounds = 100;
     private ArrayList<Nation> allNations = new ArrayList<>();
     private ArrayList<Nation> allLivingNations = new ArrayList<>();
 
@@ -144,8 +144,9 @@ public class World
         person2LifePointsToUse = worldCreatedPeople.get(person2).encounterLifePoints(worldCreatedPeople.get(person1), worldCreatedPeople.get(person2));
 
         // amount of life points actually used is subject to a psuedo-random encounter
-        Integer p1damage =  (generator.roll(10) / 10) * person1LifePointsToUse;
-        Integer p2damage =  (generator.roll(10) / 10) * person2LifePointsToUse;
+        Integer p1damage =  (int)((generator.roll(10) / 10.0) * person1LifePointsToUse);
+        Integer p2damage =  (int)((generator.roll(10) / 10.0) * person2LifePointsToUse);
+
 
         if ((p1damage > 0) && (p2damage > 0))  // person 1  and person 2 are fighting and inflicting damage
         {
@@ -164,16 +165,6 @@ public class World
         {
 
         }
-
-        //check if person1 subtract p2damage will be over 100 lifepoints,
-        if (worldCreatedPeople.get(person1).getLifePoints() - p2damage > 100) {
-            //clamps p2damage to have the difference between 100 and person1 lifePoints
-            p2damage = 100 - worldCreatedPeople.get(person1).getLifePoints();
-        }
-        if (worldCreatedPeople.get(person2).getLifePoints() - p1damage > 100) {
-            p1damage = 100 - worldCreatedPeople.get(person2).getLifePoints();
-        }
-
         // record the damage: positive damage should be subtracted for persons lifePoint
         // negative damage is added to persons life points
         worldCreatedPeople.get(person1).modifyLifePoints((-p2damage));
