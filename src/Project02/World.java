@@ -136,7 +136,7 @@ public class World
     {
         Integer person1LifePointsToUse;
         Integer person2LifePointsToUse;
-        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + worldCreatedPeople.get(person2));
+        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + " " + worldCreatedPeople.get(person2));
 
         //if lifePointsToUse is negative, then person is either running away in a hostile encounter
         // or person is giving life points to another person from same nation
