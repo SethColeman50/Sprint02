@@ -166,23 +166,10 @@ public class World
 
         }
 
-        //check if person1 subtract p2damage will be over 100 lifepoints,
-        if (worldCreatedPeople.get(person1).getLifePoints() - p2damage > 100) {
-            //clamps p2damage to have the difference between 100 and person1 lifePoints
-            p2damage = 100 - worldCreatedPeople.get(person1).getLifePoints();
-        }
-        if (worldCreatedPeople.get(person2).getLifePoints() - p1damage > 100) {
-            p1damage = 100 - worldCreatedPeople.get(person2).getLifePoints();
-        }
-
         //roll a d10 and use that to calculate damage based on distance
-        System.out.println("p2damage: " + p2damage);
-        System.out.println("p1damage: " + p1damage);
         int roll = generator.roll(10);
-        p2damage = (int)(p2damage * (10.0/roll));
-        p1damage = (int)(p1damage * (10.0/roll));
-        System.out.println("p2damage: " + p2damage);
-        System.out.println("p1damage: " + p1damage);
+        p2damage = (int)(p2damage * (2.5/roll));
+        p1damage = (int)(p1damage * (2.5/roll));
         // record the damage: positive damage should be subtracted for persons lifePoint
         // negative damage is added to persons life points
         worldCreatedPeople.get(person1).modifyLifePoints((-p2damage));
