@@ -35,4 +35,16 @@ class WeebWizardStratTest
 
     }
 
+    @Test
+    public void WeebWizardvsHealer()
+    {
+        WeebWizard Vin= new WeebWizard("old man","oldest men",50,new WeebWizardStrat());
+        BasicHealer Yomi = new BasicHealer("help","sleepy",40,new BasicHealerStrat());
+        assertEquals(20,Vin.encounterLifePoints(Vin,Yomi));
+        assertEquals(60,Vin.getLifePoints());
+
+        Yomi.modifyLifePoints(60);
+        assertEquals(30,Vin.encounterLifePoints(Vin,Yomi));
+    }
+
 }

@@ -10,6 +10,14 @@ public class SethWarrior extends People {
     }
     @Override
     public int encounterLifePoints(People me, People otherPerson) {
+        // If the other person is a wizard then attack them harder because they're generally more dangerous
+        if (otherPerson.getType() == PeopleType.wizard || otherPerson.getType() == PeopleType.healer) {
+            changeStrategy(new SethWarriorStrategy());
+        // If the other person is a warrior, try to do chip damage instead
+        } else {
+            changeStrategy(new SethWarriorStrat2());
+        }
+
         return encounterStrategy.strategy(me, otherPerson);
     }
 
