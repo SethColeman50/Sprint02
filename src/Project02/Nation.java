@@ -22,7 +22,7 @@ public class Nation
     /**
      * An Array List with all the tribes a nation has.
      */
-    private ArrayList<Tribe> tribes = new ArrayList<>();
+    private ArrayList<AbstractTribe> tribes = new ArrayList<>();
     /**
      * An Array List with the people total in the Nation.
      */
@@ -48,6 +48,7 @@ public class Nation
         {
             this.tribes.add(new Tribe(nationName, "Tribe" + i, nationLifePoints / 5));
         }
+        this.tribes.add(new Artifacts());
         population.addAll(getNationPopulation());
         livingPopulation.addAll(population);
     }
