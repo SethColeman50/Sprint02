@@ -57,7 +57,7 @@ public class Tribe extends AbstractTribe
                     members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
                 }
                 else if (nation.equals("Orlandos")){
-                    members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
+                    members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new AlphaHealerStrat()));
                 }
             }
         for(int i = 0; i < members.size(); i++)
