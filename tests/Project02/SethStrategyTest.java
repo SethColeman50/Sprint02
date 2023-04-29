@@ -60,11 +60,11 @@ class SethStrategyTest {
         People MainPerson = new testPerson("testNation", "testTribe", maxLifePoints, strategy);
 
         // Friendly Case if warrior
-        People FriendlyWarrior = new testPerson("testNation", "otherTribe", maxLifePoints, new SethWarriorStrategy());
+        People FriendlyWarrior = new testPerson("testNation", "otherTribe", maxLifePoints, new SethWarriorStrategy(), PeopleType.warrior);
         assertEquals(25, MainPerson.encounterLifePoints(MainPerson, FriendlyWarrior));
 
         // Friendly Case if wizard
-        People FriendlyWizard = new testPerson("testNation", "otherTribe", maxLifePoints, strategy);
+        People FriendlyWizard = new testPerson("testNation", "otherTribe", maxLifePoints, strategy, PeopleType.wizard);
         assertEquals(0, MainPerson.encounterLifePoints(MainPerson, FriendlyWizard));
 
         // Enemy Case if at 1/10 health
@@ -81,8 +81,13 @@ class SethStrategyTest {
     }
 
     static class testPerson extends People{
+        testPerson(String nation, String tribe, int lifePoints, Strategy strategy, PeopleType type) {
+            super(nation, tribe, type, lifePoints, strategy);
+            myDescription = "\tTest Person";
+        }
+
         testPerson(String nation, String tribe, int lifePoints, Strategy strategy) {
-            super(nation, tribe, PeopleType.wizard, lifePoints, strategy);
+            super(nation, tribe, PeopleType.warrior, lifePoints, strategy);
             myDescription = "\tTest Person";
         }
 
