@@ -7,10 +7,11 @@ import java.util.*;
 public class World
 {
     private final int worldLifePoints = 4000;
-    private final int numberOfRounds = 40;
+    private final int numberOfRounds = 100;
     private final ArrayList<Nation> allNations = new ArrayList<>();
+    private final ArrayList<Nation> allLivingNations = new ArrayList<>();
 
-    private final Random generator;
+    private final Die generator;
     private final ArrayList<People> worldCreatedPeople = new ArrayList<>();
 
     /**
@@ -21,7 +22,7 @@ public class World
     {
         // seed for psuedo-random number generator
         Date seed = new Date();
-        generator = new Random(seed.getTime());
+        generator = Die.getInstance();
         createWorld();
         worldCreatedPeople.addAll(getWorldCreatedPopulation());
     }
@@ -128,7 +129,7 @@ public class World
     {
         int person1LifePointsToUse;
         int person2LifePointsToUse;
-        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + worldCreatedPeople.get(person2));
+        System.out.println("Encounter: " + worldCreatedPeople.get(person1) + " " + worldCreatedPeople.get(person2));
 
         //if lifePointsToUse is negative, then person is either running away in a hostile encounter
         // or person is giving life points to another person from same nation
@@ -136,23 +137,27 @@ public class World
         person2LifePointsToUse = worldCreatedPeople.get(person2).encounterLifePoints(worldCreatedPeople.get(person1), worldCreatedPeople.get(person2));
 
         // amount of life points actually used is subject to a psuedo-random encounter
-        int p1damage =  (int) (generator.nextFloat() * person1LifePointsToUse);
-        int p2damage =  (int) (generator.nextFloat() * person2LifePointsToUse);
+        int p1damage =  (int)((generator.roll(10) / 10.0) * person1LifePointsToUse);
+        int p2damage =  (int)((generator.roll(10) / 10.0) * person2LifePointsToUse);
 
         if ((p1damage > 0) && (p2damage > 0))  // person 1  and person 2 are fighting and inflicting damage
         {
-            p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*p1damage);
-            p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*p2damage);
+            p2damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person1).getType().ordinal()+1)*p1damage;
+            p1damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person2).getType().ordinal()+1)*p2damage;
         }
         else if (p1damage > 0) // person 1 is fighting and person 2 is running
         {
-            p2damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person1).getType().ordinal()+1)*(p1damage/3));
+            p2damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person1).getType().ordinal()+1)*(p1damage/3);
         }
         else if (p2damage > 0) // person 2 is fighting and person 1 is running
         {
-            p1damage =  (int) (generator.nextFloat() * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3));
+            p1damage =  (generator.roll(10) / 10) * (worldCreatedPeople.get(person2).getType().ordinal()+1)*(p2damage/3);
         }
-        // freindly encounter, do nothing
+        
+        //roll a d10 and use that to calculate damage based on distance
+        int roll = generator.roll(10);
+        p2damage = (int)(p2damage * (2.5/roll));
+        p1damage = (int)(p1damage * (2.5/roll));
 
 
         // record the damage: positive damage should be subtracted for persons lifePoint
