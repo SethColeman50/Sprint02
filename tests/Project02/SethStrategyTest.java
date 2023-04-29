@@ -104,6 +104,26 @@ class SethStrategyTest {
         assertEquals(25, MainPerson.encounterLifePoints(MainPerson, aboveFiftyPercentEnemyPerson));
     }
 
+    @Test
+    public void testHealerStrat1() {
+        Strategy strategy = new SethHealerStrategy1();
+        int maxLifePoints = 100;
+
+        People MainPerson = new testPerson("testNation", "testTribe", maxLifePoints, strategy);
+
+        // Friendly Case if in tribe
+        People FriendlyTribesmate = new testPerson("testNation", "testTribe", maxLifePoints, new SethWarriorStrategy());
+        assertEquals(25, MainPerson.encounterLifePoints(MainPerson, FriendlyTribesmate));
+
+        // Friendly Case if not in tribe
+        People FriendlyWizard = new testPerson("testNation", "otherTribe", maxLifePoints, strategy, PeopleType.wizard);
+        assertEquals(10, MainPerson.encounterLifePoints(MainPerson, FriendlyWizard));
+
+        // Enemy Case
+        People RegularEnemyPerson = new testPerson("otherNation", "otherTribe", maxLifePoints, strategy);
+        assertEquals(0, MainPerson.encounterLifePoints(MainPerson, RegularEnemyPerson));
+    }
+
     static class testPerson extends People{
         testPerson(String nation, String tribe, int lifePoints, Strategy strategy, PeopleType type) {
             super(nation, tribe, type, lifePoints, strategy);
