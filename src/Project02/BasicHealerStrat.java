@@ -14,7 +14,6 @@ public class BasicHealerStrat implements Strategy
      * @param otherPerson - the opponent of the encounter
      * @return
      */
-    @Override
     public int strategy(People me, People otherPerson)
     {
         int lifePoints = 0;
