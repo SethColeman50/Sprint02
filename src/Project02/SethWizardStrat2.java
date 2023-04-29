@@ -1,23 +1,28 @@
 package Project02;
 
-public class SethWizardStrat2 implements Strategy{
+public class SethWizardStrat2 implements Strategy {
+    /**
+     * A wizard strategy that attacks really hard
+     * @param me - person to get life points for.
+     * @param otherPerson - the opponent of the encounter
+     * @return life points
+     */
     @Override
     public int strategy(People me, People otherPerson) {
+        // Heals people a lot less than the original strategy
         if (me.getNation().equals(otherPerson.getNation())) {
             if (me.getTribe().equals(otherPerson.getTribe())) {
-                return 50;
+                return me.getLifePoints() / 5;
             } else {
-                if (otherPerson.encounterStrategy.getClass().toString().contains("Wizard")) {
-                    return 0;
-                } else {
-                    return 25;
-                }
+                return me.getLifePoints() / 10;
             }
-        } else {
-            if (otherPerson.getLifePoints() <= 10) {
-                return 10;
+        }
+        // Attacks with one fourth of their health or more if the enemy is low
+        else {
+            if (otherPerson.getLifePoints() <= 50) {
+                return me.getLifePoints() / 2;
             } else {
-                return 0;
+                return me.getLifePoints() / 4;
             }
         }
     }
