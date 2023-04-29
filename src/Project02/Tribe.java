@@ -72,7 +72,7 @@ public class Tribe
                     members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
                 }
                 else if (nation.equals("Seths")){
-                    members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
+                    members.add(new SethHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
                 }
                 else if (nation.equals("Owens")){
                     members.add(new OwenHealer(nationName, tribeName, tribeLifePoints / 6, new OwenHealerStrategy(), new OwenHealerStrategy2()));
