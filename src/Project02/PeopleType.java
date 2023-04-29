@@ -35,4 +35,10 @@ public enum PeopleType
     {
         return description;
     }
+
+    /**
+     * Change the type to the give one
+     * @param type the type to be changed to
+     */
+    public void changeType(String type){description=type;}
 }

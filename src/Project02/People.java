@@ -168,5 +168,16 @@ public abstract class People
         String result = new String( myNation + "\t" +  myTribe + "\t" + me + "\t" + myDescription + "\t" + myLifePoints);
         return result;
     }
+
+    /**
+     * Changes the person to a different type with a different strategy
+     * @param type the new type
+     * @param strat the new strategy
+     */
+    public void beReborn(String type, Strategy strat)
+    {
+        me.changeType(type);
+        encounterStrategy = strat;
+    }
 }
 
