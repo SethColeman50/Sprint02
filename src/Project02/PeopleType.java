@@ -10,8 +10,8 @@ public enum PeopleType
      */
     wizard  ("wizard"),
     warrior ("warrior"),
-    healer ("healer");
-
+    healer ("healer"),
+    artifact("artifact");
     /**
      * A string which contains what type is to be used.
      */
