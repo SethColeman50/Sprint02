@@ -12,6 +12,6 @@ public class FountainOfYouth extends People {
     public int encounterLifePoints(People me, People otherPerson) {
         otherPerson.modifyLifePoints((100-otherPerson.getLifePoints()));
         uses++;
-        return 0;
+        return encounterStrategy.strategy(me,otherPerson);
     }
 }
