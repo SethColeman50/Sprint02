@@ -170,14 +170,12 @@ public abstract class People
     }
 
     /**
-     * Changes the person to a different type with a different strategy
-     * @param type the new type
-     * @param strat the new strategy
+     * Simply returns the encounter strategy
+     * @return
      */
-    public void beReborn(String type, Strategy strat)
+    public Strategy getStrat()
     {
-        me.changeType(type);
-        encounterStrategy = strat;
+        return encounterStrategy;
     }
 }
 
