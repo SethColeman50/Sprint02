@@ -22,6 +22,7 @@ public class WeebWarrior extends People
     /**
      * Function called with two individuals which uses this individual's strategy to decide what happens when encountering
      * another person. Returns how many lifepoints are to get added or subtracted.
+     * The warrior changes strategy when facing another warrior.
      * @param me ,the individual calling the method
      * @param OtherPerson ,the opponent
      * @return the life points commited
@@ -29,6 +30,14 @@ public class WeebWarrior extends People
     @Override
     public int encounterLifePoints(People me,People OtherPerson)
     {
+        if (OtherPerson.getType().equals(me.getType()))
+        {
+            me.changeStrategy(new WeebWarriorStrat2());
+        }
+        else
+        {
+            me.changeStrategy(new WeebWarriorStrat());
+        }
         return encounterStrategy.strategy(me, OtherPerson);
     }
 

@@ -24,7 +24,8 @@ public class WeebWizard extends People
     }
 
     /**
-     * Returns the WeebWizard strategy.
+     * Returns the WeebWizard strategy. Change strategies to the 2nd when facing a healer. Face all other enemies
+     * on strategy 1.
      * @param me , the individual calling the method
      * @param otherPerson , the opponent
      * @return an int of life points
@@ -32,6 +33,14 @@ public class WeebWizard extends People
     @Override
     public int encounterLifePoints(People me, People otherPerson)
     {
+        if (otherPerson.getType().equals(PeopleType.healer))
+        {
+            me.changeStrategy(new WeebWizardStrat2());
+        }
+        else
+        {
+            me.changeStrategy(new WeebWizardStrat());
+        }
         return encounterStrategy.strategy(me, otherPerson);
     }
 

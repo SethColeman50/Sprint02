@@ -138,7 +138,11 @@ public abstract class People
      */
     public void modifyLifePoints(int points)
     {
-        myLifePoints += points;
+        if (myLifePoints + points >= 100) {
+            myLifePoints = 100;
+        } else {
+            myLifePoints += points;
+        }
     }
 
     /**

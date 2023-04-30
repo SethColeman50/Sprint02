@@ -2,22 +2,21 @@ package Project02;
 
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeebWarriorStratTest
 {
     @Test
-    public void testWeebWarriorCombat()
+    public void testWeebWarriorCombat1()
     {
         WeebWarrior Paradox=new WeebWarrior("Old Man","oldest men",100,new WeebWarriorStrat());
-        SchaperWarrior StrikingDummy=new SchaperWarrior("Eorzea","FC",100,new WarriorStrategy());
         SchaperWizard StrikingDrone=new SchaperWizard("Eorzea","FC",100,new WizardStrategy());
 
-        assertEquals(100,Paradox.encounterLifePoints(Paradox,StrikingDummy));
         assertEquals(100,Paradox.encounterLifePoints(Paradox,StrikingDrone));
 
         Paradox.modifyLifePoints(-31);
-        assertEquals(6,Paradox.encounterLifePoints(Paradox,StrikingDummy));
         assertEquals(6,Paradox.encounterLifePoints(Paradox,StrikingDrone));
 
     }
@@ -37,6 +36,21 @@ class WeebWarriorStratTest
         //Tests smallest.
         assertEquals(1,Paradox.encounterLifePoints(Paradox,Vin));
 
+    }
+
+    @Test
+    public void testWeebWarriorChange()
+    {
+        SchaperWarrior StrikingDummy = new SchaperWarrior("Eorzea","FC",100,new WarriorStrategy());
+        WeebWarrior Paradox = new WeebWarrior("Old Man","Oldest Men",100,new WeebWarriorStrat());
+
+        assertEquals(120,Paradox.encounterLifePoints(Paradox,StrikingDummy));
+        assertEquals(1,Paradox.getLifePoints());
+
+        Paradox.modifyLifePoints(50);
+        StrikingDummy.modifyLifePoints(50);
+        assertEquals(25,Paradox.encounterLifePoints(Paradox,StrikingDummy));
+        assertEquals(40,Paradox.getLifePoints());
     }
 
 }

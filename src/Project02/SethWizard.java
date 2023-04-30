@@ -10,6 +10,15 @@ public class SethWizard extends People {
     }
     @Override
     public int encounterLifePoints(People me, People otherPerson) {
+        // If you are above half health attack super hard
+        if (me.getLifePoints() >= 50) {
+            changeStrategy(new SethWizardStrat2());
+        }
+        // If you are below half health heal your teammates
+        else {
+            changeStrategy(new SethWizardStrat2());
+        }
+
         return encounterStrategy.strategy(me, otherPerson);
     }
 

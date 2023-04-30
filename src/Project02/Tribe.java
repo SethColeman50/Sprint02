@@ -32,7 +32,7 @@ public class Tribe extends AbstractTribe
                 } else if (nation.equals("Seths")) {
                     members.add(new SethWarrior(nationName, tribeName, tribeLifePoints / 6, new SethWarriorStrategy()));
                 } else if (nation.equals("Owens")) {
-                    members.add(new OwenWarrior(nationName, tribeName, tribeLifePoints / 6, new OwenWarriorStrategy()));
+                    members.add(new OwenWarrior(nationName, tribeName, tribeLifePoints / 6, new OwenWarriorStrategy(), new OwenWarriorStrategy2()));
                 } else if (nation.equals("Orlandos")) {
                     members.add(new WeebWarrior(nationName,tribeName,tribeLifePoints/ 6, new WeebWarriorStrat()));
                 }
@@ -42,7 +42,7 @@ public class Tribe extends AbstractTribe
                 } else if (nation.equals("Seths")) {
                     members.add(new SethWizard(nationName, tribeName, tribeLifePoints / 6, new SethWizardStrategy()));
                 } else if (nation.equals("Owens")) {
-                    members.add(new OwenWizard(nationName, tribeName, tribeLifePoints / 6, new OwenWizardStrategy()));
+                    members.add(new OwenWizard(nationName, tribeName, tribeLifePoints / 6, new OwenWizardStrategy(), new OwenWizardStrategy2()));
                 } else if (nation.equals("Orlandos")) {
                     members.add(new WeebWizard(nationName, tribeName, tribeLifePoints / 6, new WeebWizardStrat()));
                 }
@@ -51,10 +51,10 @@ public class Tribe extends AbstractTribe
                     members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
                 }
                 else if (nation.equals("Seths")){
-                    members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
+                    members.add(new SethHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
                 }
                 else if (nation.equals("Owens")){
-                    members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new BasicHealerStrat()));
+                    members.add(new OwenHealer(nationName, tribeName, tribeLifePoints / 6, new OwenHealerStrategy(), new OwenHealerStrategy2()));
                 }
                 else if (nation.equals("Orlandos")){
                     members.add(new BasicHealer(nationName, tribeName, tribeLifePoints / 6, new AlphaHealerStrat()));
