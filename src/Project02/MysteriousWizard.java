@@ -20,7 +20,8 @@ public class MysteriousWizard extends People
 
 
     /**
-     * When encountered, change the person's type arbitrarily and give them a new strategy to match
+     * When encountered, change the person's strategy arbitrarily to one they should not normally have. But this also means
+     * their type stays the same which can lead to bad situations depending on the opponents they run into after
      * @param merlin the wizard, ye olde one
      * @param otherPerson the person encountering them
      * @return
@@ -30,13 +31,13 @@ public class MysteriousWizard extends People
         switch (otherPerson.getType())
         {
             case wizard:
-                otherPerson.beReborn("healer",new BasicHealerStrat());
+                otherPerson.changeStrategy(new BasicHealerStrat());
                 break;
             case warrior:
-                otherPerson.beReborn("wizard",new WizardStrategy());
+                otherPerson.changeStrategy(new WizardStrategy());
                 break;
             case healer:
-                otherPerson.beReborn("warrior",new WarriorStrategy());
+                otherPerson.changeStrategy(new WarriorStrategy());
                 break;
         }
         uses++;
