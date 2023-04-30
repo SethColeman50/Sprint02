@@ -1,10 +1,10 @@
 package Project02;
 
-public class FountainOfYouth extends People{
+public class FountainOfYouth extends People {
 
-    FountainOfYouth(String nation, String tribe, int lifePoints, Strategy Wiza)
+    FountainOfYouth(String nation, String tribe, int lifePoints)
     {
-        super(nation, tribe, PeopleType.artifact, lifePoints, Wiza);
+        super(nation, tribe, PeopleType.artifact, lifePoints, new NothingStrategy());
         myDescription = "The Fountain of Youth";
     }
 

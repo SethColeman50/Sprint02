@@ -14,7 +14,7 @@ public class MysteriousWizard extends People
      */
     MysteriousWizard(String nation, String tribe, int lifePoints, Strategy Wiza)
     {
-        super(nation, tribe, PeopleType.wizard, lifePoints, Wiza);
+        super(nation, tribe, PeopleType.artifact, lifePoints, Wiza);
         myDescription = "A Mysterious Lady";
     }
 
