@@ -8,23 +8,27 @@ import Project02.PeopleType;
 public abstract class People
 {
     /**
+     * A string containing the person's name.
+     */
+    private String personName;
+    /**
      * A string containing what Nation the person is a part of.
      */
-    private final String myNation;
+    private String myNation;
     /**
      * A string containing what tribe a person is a part of.
      */
-    private final String myTribe;
+    private String myTribe;
     /**
      * Variable of type PeopleType containing what 'type' a person is. Either Wizard or Warrior.
      */
-    private final PeopleType me;
+    private PeopleType me;
     /**
      * Has the description for the person within a string.
      */
     protected String myDescription;
     /**
-     * An int variable containing the amount of life points a person has.
+     * An int variable containing the amount of lifepoints a person has.
      */
     private int myLifePoints;
     /**
@@ -34,7 +38,7 @@ public abstract class People
     /**
      * A Strategy type variable with the encounter strategy to be used.
      */
-    protected final Strategy encounterStrategy;
+    protected Strategy encounterStrategy;
 
 
     /**
@@ -45,13 +49,13 @@ public abstract class People
 
     /**
      * The People constructor. Requires two strings, one for the nation and one for the tribe. It also gets passed
-     * how many life points the person has and what strategy will be used for encounters. It stores each in its
+     * how many lifepoints the person has and what strategy will be used for encounters. It stores each in its
      * respective variables.
-     * @param nation the nation this person is a part of
-     * @param tribe the tribe this person is a part of
-     * @param person the type of the person
-     * @param lifePoints the total life points of the person
-     * @param strategy the persons strategy
+     * @param nation
+     * @param tribe
+     * @param person
+     * @param lifePoints
+     * @param strategy
      */
     public People(String nation, String tribe, PeopleType person, int lifePoints, Strategy strategy)
     {
@@ -75,7 +79,7 @@ public abstract class People
 
     /**
      * Returns the dead boolean to notify if the person is dead.
-     * @return true if the person is dead, false if otherwise
+     * @return
      */
     public boolean getDead()
     {
@@ -84,7 +88,7 @@ public abstract class People
 
     /**
      * Returns what type a person is. Aka if a wizard or warrior.
-     * @return the persons type as an enum value
+     * @return
      */
     public PeopleType getType()
     {
@@ -93,7 +97,7 @@ public abstract class People
 
     /**
      * Returns what tribe a person is a part of.
-     * @return a string that is the name of the persons tribe
+     * @return
      */
     public String getTribe()
     {
@@ -102,7 +106,7 @@ public abstract class People
 
     /**
      * Returns what nation a person is a part of.
-     * @return the person's nation as a string
+     * @return
      */
     public String getNation()
     {
@@ -110,8 +114,8 @@ public abstract class People
     }
 
     /**
-     * Checks and returns if a person is alive, aka if their life points are above 0.
-     * @return true if person is alive
+     * Checks and returns if a person is alive, aka if their lifepoints are above 0.
+     * @return
      */
     public Boolean isPersonAlive()
     {
@@ -119,8 +123,8 @@ public abstract class People
     }
 
     /**
-     * Returns how many life points the person has.
-     * @return the persons current life points as an int
+     * Returns how many lifepoints the person has.
+     * @return
      */
     public int getLifePoints()
     {
@@ -128,9 +132,9 @@ public abstract class People
     }
 
     /**
-     * Modifies the life points a person has by adding the passed value, an int, into the myLifePoints int.
-     * Negative life points subtract, positive life points add to it.
-     * @param points the points that are added or subtracted from your health
+     * Modifies the lifepoints a person has by adding the passed value, an int, into the myLifePoints int.
+     * Negative lifepoints subtract, positive lifepoints add to it.
+     * @param points
      */
     public void modifyLifePoints(int points)
     {
@@ -142,7 +146,16 @@ public abstract class People
     }
 
     /**
-     * The abstract for how much life points a person got or lost from an encounter.
+     * Changes what strategy you use. Gets passed a Strategy object and sets it into encounterStrategy varaible.
+     * @param s
+     */
+    public void changeStrategy(Strategy s)
+    {
+        encounterStrategy = s;
+    }
+
+    /**
+     * The abstract for how many lifepoints a person got or lost from an encounter.
      * @param me
      * @param otherPerson
      * @return
@@ -151,12 +164,13 @@ public abstract class People
 
     /**
      * Returns a string with the details of a person. What nation, tribe, who the person is, their description and
-     * their life points.
+     * their lifepoints.
      * @return
      */
     public String toString()
     {
-        return myNation + "\t" + myTribe + "\t" + me + "\t" + myDescription + "\t" + myLifePoints;
+        String result = new String( myNation + "\t" +  myTribe + "\t" + me + "\t" + myDescription + "\t" + myLifePoints);
+        return result;
     }
 
     /**

@@ -26,7 +26,7 @@ public class SchaperWizard extends People
 
     /**
      * The function, taking two individuals being passed, which uses this specific individual's strategy to
-     * decide what happens and returns how many life points are added or taken.
+     * decide what happens and returns how many lifepoints are added or taken.
      * @param me - This specific individual, the one who starts the encounter
      * @param otherPerson - The other party.
      * @return

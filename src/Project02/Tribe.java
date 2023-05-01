@@ -1,6 +1,10 @@
 package Project02;
+import java.util.Collection;
+import java.util.Collections;
+import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import Project02.People;
+import Project02.PeopleType;
 import Project02.SchaperWarrior;
 import Project02.SchaperWizard;
 
@@ -21,7 +25,6 @@ public class Tribe extends AbstractTribe
         nationName = nation;
         tribeName = tribe;
         tribeLifePoints = lifePoints;
-
         for(int i = 0; i < 6; i++)
             if(i % 3 == 0) {
                 if (nation.equals("Schapers")) {
@@ -61,4 +64,6 @@ public class Tribe extends AbstractTribe
             livingMembers.addAll(members);
 
     }
+
+
 }

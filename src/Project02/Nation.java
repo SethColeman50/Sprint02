@@ -14,28 +14,27 @@ public class Nation
     /**
      * The string containing the nation's name.
      */
-    private final String nationName;
+    private String nationName;
     /**
      * An Array List with all the tribes a nation has.
      */
-    private final ArrayList<Tribe> tribes = new ArrayList<>();
-
+    private ArrayList<AbstractTribe> tribes = new ArrayList<>();
     /**
      * An Array List with the people total in the Nation.
      */
-    private final ArrayList<People> population = new ArrayList<>();
+    private ArrayList<People> population = new ArrayList<>();
     /**
      * An Array List with the people still alive.
      */
-    private final ArrayList<People> livingPopulation = new ArrayList<>();
+    private ArrayList<People> livingPopulation = new ArrayList<>();
 
 
     /**
-     * The constructor. Takes a string for the name and the number of life points to initiate it with.
-     * It saves the name of the nation into nationName and the amount of life points into nationLifePoints.
+     * The constructor. Takes a string for the name and the number of lifepoints to initiate it with.
+     * It saves the name of the nation into nationName and the amount of lifepoints into nationLifePoints.
      * It then creates 5 tribes and adds the population and copies that same population into livingPopulation.
-     * @param name the name of the nation
-     * @param lifePoints the total life points of the nation
+     * @param name
+     * @param lifePoints
      */
     public Nation(String name, int lifePoints)
     {
@@ -55,18 +54,20 @@ public class Nation
 
     /**
      * Gets the living population of the nation.
-     * @return a list of the current people that are living
+     * @return
      */
     public ArrayList<People> getNationPopulation()
     {
         nationLifePoints = 0;
         livingPopulation.clear();
-        for (Tribe value : this.tribes) {
-            if (value.isTribeAlive()) {
+        for(int tribe = 0; tribe < this.tribes.size(); tribe++)
+        {
+            if(tribes.get(tribe).isTribeAlive())
+            {
                 //System.out.println(tribes.get(tribe));
-                livingPopulation.addAll(value.getLivingTribeMembers());
+                livingPopulation.addAll(tribes.get(tribe).getLivingTribeMembers());
                 //System.out.println(tribes.get(tribe).getLivingTribeMembers());
-                nationLifePoints += value.getTribeLifePoints();
+                nationLifePoints += tribes.get(tribe).getTribeLifePoints();
             }
         }
         return livingPopulation;
@@ -74,17 +75,48 @@ public class Nation
 
 
     /**
+     * returns the nation name.
+     * @return
+     */
+    public String getNationName()
+    {
+        return nationName;
+    }
+
+
+    /**
+     * Prints to the screen if the tribes within a specific nation are alive or dead. If alive, how many members left.
+     */
+    public void printTribesStatus()
+    {
+        for(int tribe = 0; tribe < 1; tribe++)
+        {
+            if(tribes.get(tribe).isTribeAlive())
+            {
+                System.out.print(tribes.get(tribe).getTribeName() + " is alive and has ");
+                System.out.println(tribes.get(tribe).getTribeSize() + " members.");
+            }
+            else
+            {
+                System.out.println(tribes.get(tribe).getTribeName() + " is dead.");
+            }
+        }
+    }
+
+    /**
      * Returns a string with all the tribes in a nation.
-     * @return a string with all the data on the nation
+     * @return
      */
     public String toString()
     {
-        StringBuilder result = new StringBuilder(nationName);
-        for (Tribe tribe : tribes) {
-            result.append('\n').append(tribe.toString());
+        String result = "\0";
+        result = nationName;
+        for(int i = 0; i < tribes.size(); i++)
+        {
+            result = result + '\n' + tribes.get(i).toString();
 
         }
-        result.append('\n');
-        return result.toString();
+        result = result + '\n';
+        return result;
     }
 }
