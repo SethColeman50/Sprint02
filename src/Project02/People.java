@@ -119,7 +119,7 @@ public abstract class People
      */
     public Boolean isPersonAlive()
     {
-        return (myLifePoints > 0);
+        return (myLifePoints > 0 && uses < 2);
     }
 
     /**
