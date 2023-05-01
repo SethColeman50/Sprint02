@@ -11,8 +11,10 @@ public class Artifacts extends AbstractTribe
         tribeLifePoints = 600;
 
         members.add(new FountainOfYouth(nationName,tribeName,tribeLifePoints/6));
-        members.add(new MysteriousWizard(nationName,tribeName,tribeLifePoints/6,new WizardStrategy()));
+        members.add(new MysteriousWizard(nationName,tribeName,tribeLifePoints/6));
         members.add(new BottomlessPit(nationName,tribeName,tribeLifePoints/6));
+        members.add(new BearTrap(nationName, tribeName, tribeLifePoints / 6));
+        members.add(new TreasureChest(nationName, tribeName, tribeLifePoints / 6));
     }
 
     @Override
