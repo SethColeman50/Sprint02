@@ -1,16 +1,16 @@
 package Project02;
 
-public class FountainOfYouth extends People {
+public class BottomlessPit extends People{
 
-    FountainOfYouth(String nation, String tribe, int lifePoints)
+
+    BottomlessPit(String nation, String tribe, int lifePoints)
     {
         super(nation, tribe, PeopleType.artifact, lifePoints, new NothingStrategy());
-        myDescription = "The Fountain of Youth";
+        myDescription = "Bottomless Pit";
     }
-
     @Override
     public int encounterLifePoints(People me, People otherPerson) {
-        otherPerson.modifyLifePoints((100-otherPerson.getLifePoints()));
+        otherPerson.setDead();
         uses++;
         return encounterStrategy.strategy(me,otherPerson);
     }

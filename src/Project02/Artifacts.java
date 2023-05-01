@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class Artifacts extends AbstractTribe
 {
-    public Artifacts()
+    public Artifacts(String nationName, String tribeName)
     {
-        nationName = "Artifact";
-        tribeName = "Artifact";
-        tribeLifePoints = 1000;
+        this.nationName = nationName;
+        this.tribeName = tribeName;
+        tribeLifePoints = 600;
 
-//        members.add();
+        members.add(new FountainOfYouth(nationName,tribeName,tribeLifePoints/6));
+        members.add(new MysteriousWizard(nationName,tribeName,tribeLifePoints/6,new WizardStrategy()));
+        members.add(new BottomlessPit(nationName,tribeName,tribeLifePoints/6));
     }
 
     @Override
