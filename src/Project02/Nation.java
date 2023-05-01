@@ -48,7 +48,7 @@ public class Nation
         {
             this.tribes.add(new Tribe(nationName, "Tribe" + i, nationLifePoints / 5));
         }
-        this.tribes.add(new Artifacts());
+        this.tribes.add(new Artifacts(nationName, "Artifacts"));
         population.addAll(getNationPopulation());
         livingPopulation.addAll(population);
     }
