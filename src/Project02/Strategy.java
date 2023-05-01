@@ -8,5 +8,5 @@ public interface Strategy
      * @param otherPerson - the opponent of the encounter
      * @return - number of life points to use in an encounter
      */
-    int strategy(People me, People otherPerson);
+    public int strategy(People me, People otherPerson);
 }

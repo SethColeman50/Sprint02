@@ -1,7 +1,7 @@
 package Project02;
 
 /**
- * Weeb Warrior, the ultimate warrior which doesn't get healed(outside of 1 consolation lifepoint),
+ * Weeb Warrior, the ultimate warrior which doesn't get healed(outside of 1 consolation lifepoint,
  * but heals others for a large amount.
  * It then also deals a large amount of damage.
  */

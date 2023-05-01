@@ -11,7 +11,7 @@ public class WizardStrategy implements Strategy{
      */
     public int strategy(People me, People otherPerson) {
         int lifePoints = 0;
-        if (!me.getNation().equals(otherPerson.getNation()))
+        if (me.getNation() != otherPerson.getNation())
         {
             if (otherPerson.getLifePoints() < me.getLifePoints())
             {
@@ -21,7 +21,7 @@ public class WizardStrategy implements Strategy{
                 }
                 else // attack a wizard
                 {
-                    lifePoints = me.getLifePoints()/2;
+                    lifePoints = (int) (me.getLifePoints()/2);
                 }
             }
         }
@@ -29,7 +29,11 @@ public class WizardStrategy implements Strategy{
         {
             if (otherPerson.getLifePoints() < me.getLifePoints()) // heal a friend
             {
-                lifePoints = me.getLifePoints() - otherPerson.getLifePoints() / 2;
+                lifePoints = (int) (me.getLifePoints() - otherPerson.getLifePoints() / 2);
+            }
+            else
+            {
+                lifePoints = 0;
             }
         }
         return lifePoints;
