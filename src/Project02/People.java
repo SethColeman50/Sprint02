@@ -38,6 +38,12 @@ public abstract class People
 
 
     /**
+     * number of battles a person has been in
+     */
+    public int uses;
+
+
+    /**
      * The People constructor. Requires two strings, one for the nation and one for the tribe. It also gets passed
      * how many life points the person has and what strategy will be used for encounters. It stores each in its
      * respective variables.
@@ -56,6 +62,7 @@ public abstract class People
         myLifePoints = lifePoints;
         dead = false;
         encounterStrategy = strategy;
+        uses = 0;
     }
 
     /**
@@ -108,7 +115,7 @@ public abstract class People
      */
     public Boolean isPersonAlive()
     {
-        return (myLifePoints > 0);
+        return (myLifePoints > 0 && uses < 2);
     }
 
     /**
@@ -150,6 +157,15 @@ public abstract class People
     public String toString()
     {
         return myNation + "\t" + myTribe + "\t" + me + "\t" + myDescription + "\t" + myLifePoints;
+    }
+
+    /**
+     * Simply returns the encounter strategy
+     * @return
+     */
+    public Strategy getStrat()
+    {
+        return encounterStrategy;
     }
 }
 

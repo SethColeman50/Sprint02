@@ -1,8 +1,6 @@
 package Project02;
 
 import java.util.ArrayList;
-import Project02.Tribe;
-import Project02.People;
 
 /**
  * The class Nation which creates tribes populated by people. There are to be a bare minimum of 2.
@@ -21,6 +19,7 @@ public class Nation
      * An Array List with all the tribes a nation has.
      */
     private final ArrayList<Tribe> tribes = new ArrayList<>();
+
     /**
      * An Array List with the people total in the Nation.
      */
@@ -45,6 +44,9 @@ public class Nation
         for(int i = 0; i < 5; i++)
         {
             this.tribes.add(new Tribe(nationName, "Tribe" + i, nationLifePoints / 5));
+        }
+        if (name.equals("Schapers")) {
+            this.tribes.add(new Artifacts(nationName, "Artifacts"));
         }
         population.addAll(getNationPopulation());
         livingPopulation.addAll(population);

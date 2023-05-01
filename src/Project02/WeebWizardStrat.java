@@ -24,7 +24,7 @@ public class WeebWizardStrat implements Strategy
         {
             if (otherPerson.getLifePoints() < me.getLifePoints())
             {
-                if (otherPerson.getType() == PeopleType.warrior) //Get your cast interrupted, take damage equal to half of current life points.
+                if (otherPerson.getType().equals(PeopleType.warrior)) //Get your cast interrupted, take damage equal to half of current life points.
                 {
                     lifePoints = -((me.getLifePoints()*2)/2);
                 }
@@ -39,11 +39,11 @@ public class WeebWizardStrat implements Strategy
         {
             if (otherPerson.getType() != PeopleType.warrior && me.getLifePoints()>50) //Beat up a friend
             {
-                lifePoints = -((me.getLifePoints() - otherPerson.getLifePoints())+2)/2;
+                lifePoints = ((me.getLifePoints() - otherPerson.getLifePoints())+2)/2;
             }
             else if (otherPerson.getType() == PeopleType.wizard && me.getLifePoints()<50) //Get cocky and die to a stray attack when sassing the other Wizards
             {
-                me.setDead();
+                me.modifyLifePoints(-49);
             }
             else
             {
