@@ -12,7 +12,7 @@ public class WeebWizardStrat implements Strategy
      * as casting such a strong spell takes a lot of time, so Warriors interrupt the cast by attacking them.
      * But casting the spell, which deals damage equal to total health at that moment, kills them off.
      * When meeting someone from the same nation, they beat up warriors after getting mad at them, get cocky and die
-     * when below 50 and can cast a heal when above 50 for their current amount.
+     * when below 50 and can cast heal when above 50 for their current amount.
      * @param me - person to get life points for.
      * @param otherPerson - the opponent of the encounter
      * @return the life points commited
