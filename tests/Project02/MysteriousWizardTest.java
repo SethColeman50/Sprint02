@@ -9,7 +9,7 @@ class MysteriousWizardTest
     @Test
     public void MerlinTest()
     {
-        MysteriousWizard merlin = new MysteriousWizard("none","ye oldes",10000, new WeebWizardStrat());
+        MysteriousWizard merlin = new MysteriousWizard("none","ye oldes",10000);
         SchaperWarrior test = new SchaperWarrior("e","u",100,new WarriorStrategy());
         assertEquals(0,merlin.encounterLifePoints(merlin,test));
         System.out.println(test.getStrat());

@@ -10,11 +10,10 @@ public class MysteriousWizard extends People
      * @param nation Belongs to no nation
      * @param tribe Part of the ancients talked of in legend, a group of artifacts
      * @param lifePoints the lifepoints... Said to be immortal
-     * @param Wiza a wizard strategy as they are a wizard at heart
      */
-    MysteriousWizard(String nation, String tribe, int lifePoints, Strategy Wiza)
+    MysteriousWizard(String nation, String tribe, int lifePoints)
     {
-        super(nation, tribe, PeopleType.artifact, lifePoints, Wiza);
+        super(nation, tribe, PeopleType.artifact, lifePoints, new WizardStrategy());
         myDescription = "A Mysterious Lady";
     }
 
